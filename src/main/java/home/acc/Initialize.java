@@ -20,8 +20,8 @@ public class Initialize {
 
     @PostConstruct
     private void postConstruct() {
-        operation1 = new Operation();
-        operation1.setAll(Calendar.getInstance().getTime(), "operation1", 100F);
-        accEJB.addOperation(operation1);
+//        operation1 = new Operation();
+//        operation1.setAll(Calendar.getInstance().getTime(), "operation1", 100F);
+//        accEJB.addOperation(operation1);
     }
 }

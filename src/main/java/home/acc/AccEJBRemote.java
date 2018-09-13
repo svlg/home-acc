@@ -9,6 +9,7 @@ import java.util.List;
 
 @Remote
 public interface AccEJBRemote {
-    List<Operation> listOperations();
+    List<Operation> getOperationList();
+    List<Operation> getLastOperationList();
     Operation addOperation(@NotNull Operation operation);
 }
