@@ -11,6 +11,7 @@
 <ui:composition template="layout.xhtml">
     <ui:define name="title">Домашняя бухгалтерия</ui:define>
     <ui:define name="content">
+        <h:link value="Create a category" outcome="form_categoryElement.xhtml"/>
         <h:form id="operationForm">
             <h:panelGrid columns="2">
                 <h:outputLabel value="Дата : "/>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="SQL Server (Microsoft) - java-home-acc@localhost" uuid="16ba5558-b22f-4ca3-968d-4c09529b974a">
+      <database-info product="Microsoft SQL Server" version="13.00.4001" jdbc-version="4.2" driver-name="Microsoft JDBC Driver 6.4 for SQL Server" driver-version="6.4.0.0">
+        <extra-name-characters>$#@</extra-name-characters>
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>java</user-name>
+      <introspection-schemas>java-home-acc:@,dbo</introspection-schemas>
+      <ssl-config>
+        <enabled>true</enabled>
+      </ssl-config>
+    </data-source>
+  </component>
+</project>

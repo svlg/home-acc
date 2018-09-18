@@ -1,6 +1,9 @@
 package home.acc;
 
+import home.acc.Entity.Category;
 import home.acc.Entity.Operation;
+import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -43,5 +46,46 @@ public class AccEJB implements AccEJBRemote, Serializable {
         return operation;
     }
 
+    @Override
+    public List<Category> getCategoryList() {
+        return em.createNamedQuery("getCategoryList").getResultList();
+    }
+
+    @Override
+    public List<Category> getCategoryListRoot() {
+        return em.createNamedQuery("getCategoryListRoot").getResultList();
+    }
+
+    @Override
+    public TreeNode getCategoryTree() {
+        TreeNode tree = new DefaultTreeNode();
+        List<Category> list =  em.createNamedQuery("getCategoryListRoot").getResultList();
+
+        list.forEach(cat -> {TreeNode root = new DefaultTreeNode(cat, tree);
+            addNodesToTree(cat, root);
+        });
+        return tree;
+    }
+
+    private void addNodesToTree(Category cat, TreeNode root){
+        cat.getChilds().forEach(child -> {TreeNode node = new DefaultTreeNode(child, root);
+            addNodesToTree(child, node);
+        });
+    }
+
+    public @NotNull Category saveCategory(@NotNull Category category) {
+        try {
+            em.persist(category);
+        } catch (ValidationException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return category;
+    }
+
+    public Object findObjectByID(Class objClass, long id) {
+        return em.find(objClass, id);
+    }
 }
 

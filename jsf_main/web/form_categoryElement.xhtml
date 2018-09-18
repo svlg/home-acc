@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="form_layout.xhtml">
+    <ui:define name="title">Категория</ui:define>
+
+        <ui:define name="header">
+            <p:commandButton value="Записать" actionListener="#{categoryController.saveCategory}">
+                <f:ajax execute="@form" render=":content"/>
+            </p:commandButton>
+        </ui:define>
+
+        <ui:define name="content">
+
+            <h:panelGrid columns="3">
+                <h:outputLabel value="Наименование : "/>
+                <p:inputText value="#{categoryController.category.name}"/>
+                <div></div>
+
+                <h:outputLabel value="Родитель : "/>
+                <p:inputText id="parent" value="#{categoryController.category.parent}"
+                             converter="#{categoryConverter}"/>
+                <p:commandButton actionListener="#{viewController.chooseCategory}" id="btn_getCategory"
+                                 update="parent" icon="ui-icon-extlink" title="Выбрать категорию">
+                    <p:ajax event="dialogReturn" listener="#{categoryController.onCategoryChosen}" update="parent"/>
+                </p:commandButton>
+                <h:outputLabel value="Это группа : "/>
+                <!--<p:inputText value="#{categoryController.category.isGroup}"/>-->
+                <p:selectBooleanCheckbox value="#{categoryController.category.isGroup}" label="Это группа"/>
+            </h:panelGrid>
+
+        </ui:define>
+
+    <ui:define name="footer"></ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,7 @@
+home\acc\Initialize.class
+home\acc\AccEJB.class
+home\acc\Main.class
+home\acc\AccEJBRemote.class
+home\acc\DBProducer.class
+home\acc\Entity\Operation.class
+home\acc\Entity\Category.class

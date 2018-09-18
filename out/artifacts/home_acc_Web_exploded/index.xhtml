@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="layout.xhtml">
+    <ui:define name="title">Домашняя бухгалтерия</ui:define>
+    <ui:define name="content">
+        <h:link value="Create a category" outcome="form_categoryElement.xhtml"/>
+        <h:form id="operationForm">
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Дата : "/>
+                <!--<h:inputText value="#{operationController.operation.date}">-->
+                    <!--<f:convertDateTime pattern="dd.MM.yy"/>-->
+                <!--</h:inputText>-->
+                <p:calendar value="#{operationController.operation.date}"/>
+
+                <h:outputLabel value="Название : "/>
+                <p:inputText value="#{operationController.operation.name}"/>
+                <h:outputLabel value="Сумма : "/>
+                <p:inputText value="#{operationController.operation.sum}"/>
+                <h:outputLabel value="Комментарий : "/>
+                <p:inputTextarea value="#{operationController.operation.comment}" cols="20" rows="3"/>
+            </h:panelGrid>
+            <h:commandButton value="Создать операцию" action="#{operationController.doCreateOperation()}">
+                <f:ajax execute="@form" render=":operationlist :errors"/>
+            </h:commandButton>
+        </h:form>
+        <hr/>
+        <h1>Список операций</h1>
+        <h:dataTable id="operationlist" value="#{accEJB.getLastOperationList()}" var="op" border="1">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Дата"/>
+                </f:facet>
+                <!--<h:link outcome="viewBook.xhtml?id=#{bk.id}" value="#{bk.title}"/>-->
+                <h:outputText value="#{op.date}">
+                    <!--<f:convertDateTime pattern="dd.MM.yy" />-->
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Наименование"/>
+                </f:facet>
+                <h:outputText value="#{op.name}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Сумма"/>
+                </f:facet>
+                <h:outputText value="#{op.sum}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Комментарий"/>
+                </f:facet>
+                <h:outputText value="#{op.comment}"/>
+            </h:column>
+        </h:dataTable>
+    </ui:define>
+</ui:composition>
+</html>

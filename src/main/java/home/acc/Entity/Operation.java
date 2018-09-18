@@ -1,11 +1,8 @@
 package home.acc.Entity;
 
-import javax.faces.bean.RequestScoped;
-import javax.inject.Named;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 
 @Entity
@@ -24,11 +21,13 @@ public class Operation implements Serializable{
     @NotNull
     @Column(nullable = false)
     private String name;
+    @OneToOne
+    @JoinColumn(name = "category_fk", nullable = false)
+    private Category category;
     @NotNull
     @Column(nullable = false)
     private Float sum;
     private String comment;
-
 
     public void setAll(@NotNull Date date, @NotNull String name, @NotNull Float sum) {
         this.date = date;

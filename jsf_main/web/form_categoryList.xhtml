@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="form_layout.xhtml">
+    <ui:define name="title">Категории</ui:define>
+
+    <ui:define name="header">
+        <p:commandButton value="Выбрать" actionListener="#{viewController.selectCategoryFromDialog()}">
+            <!--<f:setPropertyActionListener value="#{category}" target="#{viewController.selectedCategory}" />-->
+        </p:commandButton>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="form" style="width: 100%;height: 100%">
+            <!--<p:dataTable value="#{accEJB.getCategoryList()}" var="category" type="ordered"-->
+                        <!--selection="#{viewController.selectedCategory}" selectionMode="single" rowKey="#{category.id}">-->
+                <!--<p:ajax event="rowSelect" listener="#{viewController.onRowSelect}" />-->
+                <!--&lt;!&ndash;<f:facet name="header">&ndash;&gt;-->
+                    <!--&lt;!&ndash;List&ndash;&gt;-->
+                <!--&lt;!&ndash;</f:facet>&ndash;&gt;-->
+
+                <!--<p:column headerText="id">-->
+                    <!--<h:outputText value="#{category.id}" />-->
+                <!--</p:column>-->
+                <!--<p:column headerText="name">-->
+                    <!--<h:outputText value="#{category.name}" />-->
+                <!--</p:column>-->
+                <!--<p:column headerText="parent">-->
+                    <!--<h:outputText value="#{category.parent}" converter="#{categoryConverter}" />-->
+                <!--</p:column>-->
+
+            <!--</p:dataTable>-->
+                <p:treeTable value="#{viewController.root}" var="category" type="ordered"
+                             selection="#{viewController.selectedNode}" selectionMode="single"
+                             rowKey="#{category.id}">
+                <!--<p:ajax event="select" listener="#{viewController.onNodeSelect}" />-->
+                <p:column headerText="id" visible="false" width="35">
+                    <h:outputText value="#{category.id}"/>
+                </p:column>
+                <p:column headerText="name">
+                    <h:outputText value="#{category.name}"/>
+                </p:column>
+
+                </p:treeTable>
+        </h:form>
+    </ui:define>
+    <ui:define name="footer"></ui:define>
+</ui:composition>
+</html>
