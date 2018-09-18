@@ -7,13 +7,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec8df7d1-d222-4964-a44a-6e3b8b8871b7" name="Default" comment="">
+    <list default="true" id="ec8df7d1-d222-4964-a44a-6e3b8b8871b7" name="Default" comment="update">
       <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_primefaces_themes_omega_1_0_10.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsf_main/web/form_categoryElement.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsf_main/web/form_categoryList.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsf_main/web/form_layout.xhtml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/artifacts/home_acc_Web_exploded/META-INF/MANIFEST.MF" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/artifacts/home_acc_Web_exploded/WEB-INF/classes/META-INF/MANIFEST.MF" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/artifacts/home_acc_Web_exploded/WEB-INF/classes/META-INF/beans.xml" afterDir="false" />
@@ -32,9 +28,6 @@
       <change afterPath="$PROJECT_DIR$/out/artifacts/home_acc_Web_exploded/index.xhtml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/artifacts/home_acc_Web_exploded/layout.xhtml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/artifacts/jsf_main_war_exploded/WEB-INF/lib/primefaces-6.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/home/acc/JSF/CategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/home/acc/JSF/CategoryConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/home/acc/JSF/ViewController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/META-INF/beans.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
@@ -62,22 +55,6 @@
       <change afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/16ba5558-b22f-4ca3-968d-4c09529b974a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/16ba5558-b22f-4ca3-968d-4c09529b974a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/16ba5558-b22f-4ca3-968d-4c09529b974a/storage_v2/_src_/database/java-home-acc.3nnJ0A/schema/db_owner.souIfA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/16ba5558-b22f-4ca3-968d-4c09529b974a/storage_v2/_src_/database/java-home-acc.3nnJ0A/schema/db_owner.souIfA.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/16ba5558-b22f-4ca3-968d-4c09529b974a/storage_v2/_src_/database/java-home-acc.3nnJ0A/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/16ba5558-b22f-4ca3-968d-4c09529b974a/storage_v2/_src_/database/java-home-acc.3nnJ0A/schema/dbo.sYMBAA.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home-acc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/home-acc.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsf_main/web/WEB-INF/faces-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/jsf_main/web/WEB-INF/faces-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsf_main/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/jsf_main/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsf_main/web/index.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/jsf_main/web/index.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsf_main/web/layout.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/jsf_main/web/layout.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/home_acc_Web_exploded/faces/calendar.xhtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/home/acc/AccEJB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/home/acc/AccEJB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/home/acc/AccEJBRemote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/home/acc/AccEJBRemote.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/home/acc/Entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/home/acc/Entity/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/home/acc/Entity/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/home/acc/Entity/Operation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/home/acc/JSF/PrimeFaces/CalendarView.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -230,8 +207,8 @@
       <file leaf-file-name="form_categoryList.xhtml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jsf_main/web/form_categoryList.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="49" column="30" lean-forward="true" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+            <state relative-caret-position="159">
+              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
             </state>
           </provider>
         </entry>
@@ -974,7 +951,7 @@
       <workItem from="1531594930970" duration="1198000" />
       <workItem from="1531596279941" duration="32650000" />
       <workItem from="1536346623649" duration="4245000" />
-      <workItem from="1536613001727" duration="92777000" />
+      <workItem from="1536613001727" duration="93019000" />
     </task>
     <task id="LOCAL-00001" summary="First deploy">
       <created>1531828802638</created>
@@ -990,11 +967,18 @@
       <option name="project" value="LOCAL" />
       <updated>1536869685031</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update">
+      <created>1537304564662</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1537304564662</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191643000" />
+    <option name="totallyTimeSpent" value="191885000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1022,18 +1006,18 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49413645" visible="true" weight="0.27380952" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49413645" weight="0.27380952" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32900432" />
       <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.4968017" weight="0.32900432" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" weight="0.32900432" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.5335498" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.5335498" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4946695" weight="0.4199134" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32900432" />
       <window_info id="Persistence" order="2" sideWeight="0.5136" side_tool="true" weight="0.23454158" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4864" visible="true" weight="0.23454158" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4864" visible="true" weight="0.23454158" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
@@ -1083,7 +1067,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First deploy" />
     <MESSAGE value="Added JSF" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added JSF" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1642,8 +1627,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jsf_main/web/form_categoryList.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="49" column="30" lean-forward="true" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+        <state relative-caret-position="159">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
         </state>
       </provider>
     </entry>
