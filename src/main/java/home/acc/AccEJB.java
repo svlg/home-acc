@@ -13,6 +13,8 @@ import javax.persistence.EntityManager;
 import javax.validation.ValidationException;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Named
@@ -32,6 +34,20 @@ public class AccEJB implements AccEJBRemote, Serializable {
     public List<Operation> getLastOperationList() {
         //return em.createQuery("select top 20 o from Operation o order by date desc").getResultList();
         return em.createNamedQuery("getLastOperations").setMaxResults(5).getResultList();
+    }
+
+    //@Override
+    public List<Object[]> getReport() {
+
+        Date currentDate = Calendar.getInstance().getTime();
+        return getReport(currentDate);
+    }
+
+    public List<Object[]> getReport(Date currentDate) {
+
+        if (currentDate == null) currentDate = Calendar.getInstance().getTime();
+        List<Object[]> list = em.createNamedQuery("getreport").setParameter("date", currentDate).getResultList();
+        return list;
     }
 
     public @NotNull Operation addOperation(@NotNull Operation operation) {
@@ -87,5 +103,6 @@ public class AccEJB implements AccEJBRemote, Serializable {
     public Object findObjectByID(Class objClass, long id) {
         return em.find(objClass, id);
     }
+
 }
 

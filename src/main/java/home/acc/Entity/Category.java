@@ -14,6 +14,12 @@ import java.util.Set;
 public class Category implements Serializable{
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
+    @Column
+    @Enumerated(EnumType.STRING)
+    private Type type;
+
     @NotNull
     @Column(nullable = false)
     private String name;
@@ -29,12 +35,25 @@ public class Category implements Serializable{
     @OneToMany(cascade=CascadeType.MERGE,fetch= FetchType.LAZY, mappedBy = "parent")
     private Set<Category> childs;
 
+    public enum Type{
+        income,
+        expense
+    }
+
     public Set<Category> getChilds() {
         return childs;
     }
 
     public void setChilds(Set<Category> childs) {
         this.childs = childs;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public String getParentName() {

@@ -17,22 +17,11 @@ public class CategoryController implements Serializable {
     @Inject
     private AccEJB accEJB;
 
-//    @Inject
-//    private ViewController viewController;
-
     private Category category = new Category();
 
     public CategoryController() {
-//        if (operation == null) this.operation = new Operation();
-//
-//        if (operation.getDate() == null)
-//            operation.setDate(Calendar.getInstance().getTime());
-    }
 
-//    public String saveCategory() {
-//        accEJB.saveCategory(category);
-//        return "form_categoryList.xhtml";
-//    }
+    }
 
     public Category getCategory() {
         return category;
@@ -52,4 +41,9 @@ public class CategoryController implements Serializable {
         accEJB.saveCategory(category);
         return "index.xhtml";
     }
+
+    public Category.Type[] getTypes(){
+        return Category.Type.values();
+    }
+
 }

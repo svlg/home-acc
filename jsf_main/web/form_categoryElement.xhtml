@@ -22,6 +22,16 @@
                 <h:outputLabel value="Наименование : "/>
                 <p:inputText value="#{categoryController.category.name}"/>
                 <div></div>
+                <h:outputLabel value="Тип : "/>
+                <!--<p:selectOneButton value="#{categoryController.category.type}">-->
+                    <!--&lt;!&ndash;<f:selectItem itemLabel="Расход" itemValue="#{expense}" />&ndash;&gt;-->
+                    <!--&lt;!&ndash;<f:selectItem itemLabel="Доход" itemValue="#{income}" />&ndash;&gt;-->
+                    <!--<f:selectItem itemValue="#{categoryController.types}" />-->
+                <!--</p:selectOneButton>-->
+                <h:selectOneMenu value="#{categoryController.category.type}" >
+                    <f:selectItems value="#{categoryController.types}" />
+                </h:selectOneMenu>
+                <div></div>
 
                 <h:outputLabel value="Родитель : "/>
                 <p:inputText id="parent" value="#{categoryController.category.parent}"

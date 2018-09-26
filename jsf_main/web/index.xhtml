@@ -10,58 +10,70 @@
 
 <ui:composition template="layout.xhtml">
     <ui:define name="title">Домашняя бухгалтерия</ui:define>
-    <ui:define name="content">
-        <h:link value="Create a category" outcome="form_categoryElement.xhtml"/>
-        <h:form id="operationForm">
-            <h:panelGrid columns="2">
-                <h:outputLabel value="Дата : "/>
-                <!--<h:inputText value="#{operationController.operation.date}">-->
-                    <!--<f:convertDateTime pattern="dd.MM.yy"/>-->
-                <!--</h:inputText>-->
-                <p:calendar value="#{operationController.operation.date}"/>
 
-                <h:outputLabel value="Название : "/>
-                <p:inputText value="#{operationController.operation.name}"/>
-                <h:outputLabel value="Сумма : "/>
-                <p:inputText value="#{operationController.operation.sum}"/>
-                <h:outputLabel value="Комментарий : "/>
-                <p:inputTextarea value="#{operationController.operation.comment}" cols="20" rows="3"/>
-            </h:panelGrid>
-            <h:commandButton value="Создать операцию" action="#{operationController.doCreateOperation()}">
-                <f:ajax execute="@form" render=":operationlist :errors"/>
-            </h:commandButton>
-        </h:form>
-        <hr/>
-        <h1>Список операций</h1>
-        <h:dataTable id="operationlist" value="#{accEJB.getLastOperationList()}" var="op" border="1">
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Дата"/>
-                </f:facet>
-                <!--<h:link outcome="viewBook.xhtml?id=#{bk.id}" value="#{bk.title}"/>-->
-                <h:outputText value="#{op.date}">
-                    <!--<f:convertDateTime pattern="dd.MM.yy" />-->
-                </h:outputText>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Наименование"/>
-                </f:facet>
-                <h:outputText value="#{op.name}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Сумма"/>
-                </f:facet>
-                <h:outputText value="#{op.sum}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Комментарий"/>
-                </f:facet>
-                <h:outputText value="#{op.comment}"/>
-            </h:column>
-        </h:dataTable>
+
+    <ui:define name="header">
+        <p:commandButton value="Записать" actionListener="#{operationController.doCreateOperation}" update="content, growl" >
+            <!--<f:ajax update="content"/>-->
+        </p:commandButton>
+    </ui:define>
+
+    <ui:define name="content">
+        <p:growl id="growl" showDetail="true" sticky="true" />
+        <h:panelGrid columns="3">
+            <h:outputLabel value="Дата : "/>
+            <p:calendar value="#{operationController.operation.date}"/>
+            <div></div>
+            <h:outputLabel value="Сумма : "/>
+            <p:inputText id="sum" value="#{operationController.operation.sum}" onkeyup="calcSum(event,this);"/>
+            <div></div>
+            <h:outputLabel value="Категория : "/>
+            <p:inputText id="category" value="#{operationController.operation.category}"
+                         converter="#{categoryConverter}"/>
+            <p:commandButton actionListener="#{viewController.chooseCategory}" id="btn_getCategory"
+                             update="category" icon="ui-icon-extlink" title="Выбрать категорию">
+                <p:ajax event="dialogReturn" listener="#{operationController.onCategoryChosen}"
+                        update="category"/>
+            </p:commandButton>
+
+            <!--<p:commandButton actionListener="#{viewController.openCalculator}" id="btn_dialogCalculator"-->
+                             <!--update="sum" icon="ui-icon-extlink" title="Калькулятор">-->
+                <!--&lt;!&ndash;<p:ajax event="dialogReturn" listener="#{operationController.onSumUpdate}" update="sum"/>&ndash;&gt;-->
+                <!--<p:overlayPanel id="calcPanel" for="btn_dialogCalculator" hideEffect="fade" dynamic="true" > &lt;!&ndash;style="width:200px">&ndash;&gt;-->
+                    <!--<p:inputText value = "#{operationController.stringSum}">-->
+                         <!--&lt;!&ndash;<p:ajax event="keyup" listener="#{calculatorController.calculateSum}" update="sum"/>&ndash;&gt;-->
+                    <!--</p:inputText>-->
+                <!--</p:overlayPanel>-->
+            <!--</p:commandButton>-->
+
+            <h:outputLabel value="Комментарий : "/>
+            <p:inputTextarea value="#{operationController.operation.comment}" cols="20" rows="3"/>
+        </h:panelGrid>
+
+        <script type="text/javascript">
+            function calcSum(e,exist)
+            {
+                var unicode=e.keyCode;
+                var value = exist.value;
+                var sum = 0;
+                if(unicode == 13)
+                {
+                    while (value.indexOf("+") > 0) {
+                        currentNum = value.substring(0, value.indexOf("+"));
+                        sum = sum + parseInt(currentNum);
+                        value = value.substring(1 + value.indexOf("+"));
+                        //alert(value);
+                    }
+                    sum = sum + parseInt(value);
+                    exist.value = sum;
+                }
+                // return true;
+            }
+        </script>
+    </ui:define>
+    <ui:define name="right">
+        <ui:include  src="report_spendings.xhtml" />
     </ui:define>
 </ui:composition>
+
 </html>

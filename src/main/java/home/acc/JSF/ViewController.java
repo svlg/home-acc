@@ -2,6 +2,7 @@ package home.acc.JSF;
 
 import home.acc.AccEJB;
 import home.acc.Entity.Category;
+import home.acc.Entity.Operation;
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.TreeNode;
@@ -11,6 +12,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @ManagedBean
@@ -23,6 +25,8 @@ public class ViewController {
     private Category selectedCategory;
     private TreeNode root;
     private TreeNode selectedNode;
+
+    private List<Operation> operationsList;
 
     public TreeNode getSelectedNode() {
         return selectedNode;
@@ -77,8 +81,13 @@ public class ViewController {
         options.put("modal", true);
         options.put("showEffect", "clip");
         options.put("hideEffect", "clip");
+        options.put("contentHeight", 500);
+        options.put("Width", 750);
+
         PrimeFaces.current().dialog().openDynamic("form_categoryList.xhtml", options, null);
     }
 
+    public void openCalculator(){
 
+    }
 }
