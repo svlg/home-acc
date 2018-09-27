@@ -36,9 +36,9 @@
                 <!--</p:column>-->
 
             <!--</p:dataTable>-->
-                <p:treeTable value="#{viewController.root}" var="category" type="ordered"
-                             selection="#{viewController.selectedNode}" selectionMode="single"
-                             rowKey="#{category.id}" style="width: 100%;height: 100%">
+            <p:treeTable value="#{viewController.root}" var="category" type="ordered"
+                         selection="#{viewController.selectedNode}" selectionMode="single"
+                         rowKey="#{category.id}" style="width: 100%;height: 100%">
                 <!--<p:ajax event="select" listener="#{viewController.onNodeSelect}" />-->
                 <p:column headerText="id" visible="false" style="width: 35">
                     <h:outputText value="#{category.id}"/>
@@ -46,8 +46,10 @@
                 <p:column headerText="name">
                     <h:outputText value="#{category.name}"/>
                 </p:column>
-
-                </p:treeTable>
+                <p:column headerText="type">
+                    <h:outputText value="#{category.type}"/>
+                </p:column>
+            </p:treeTable>
         </h:form>
     </ui:define>
     <ui:define name="footer"></ui:define>

@@ -2,6 +2,7 @@ package home.acc.Entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -11,33 +12,43 @@ import java.util.Set;
         @NamedQuery(name = "getCategoryList", query = "select c from Category c"),
         @NamedQuery(name = "getCategoryListRoot", query = "select c from Category c where parent is null")
 })
+@XmlType
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Category implements Serializable{
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @XmlElement
     private Long id;
 
     @NotNull
     @Column
     @Enumerated(EnumType.STRING)
+    @XmlElement
     private Type type;
 
     @NotNull
     @Column(nullable = false)
+    @XmlElement
     private String name;
 
     @ManyToOne(fetch=FetchType.LAZY, optional = true, cascade=CascadeType.MERGE)
     @JoinColumn (name = "parentId")
+    @XmlElement
     private Category parent;
 
     @Column(columnDefinition = "BOOLEAN")
     @NotNull
+    @XmlElement
     private Boolean isGroup;
 
     @OneToMany(cascade=CascadeType.MERGE,fetch= FetchType.LAZY, mappedBy = "parent")
     private Set<Category> childs;
 
+    @XmlType
+    @XmlEnum(String.class)
     public enum Type{
-        income,
-        expense
+        @XmlEnumValue("income") income,
+        @XmlEnumValue("expense") expense
     }
 
     public Set<Category> getChilds() {
