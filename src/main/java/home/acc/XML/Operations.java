@@ -13,9 +13,13 @@ import java.util.List;
 public class Operations {
     
     @XmlElements(@XmlElement(name="operation", type=Operation.class))
-    List operations;
+    List operationsList;
     
     public void setOperations(List operations) {
-        this.operations = operations;
+        this.operationsList = operations;
+    }
+
+    public List getOperations() {
+        return this.operationsList;
     }
 }

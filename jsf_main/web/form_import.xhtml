@@ -12,9 +12,9 @@
     <h1><ui:define name="form_title">Import xml</ui:define></h1>
 
     <ui:define name="content">
-    <h:form id="f_content">
-        <p:commandButton value="Import" actionListener="#{importController.doImport}" update="@content(:growl)"/>
-    </h:form>
+    <!--<h:form id="f_content">-->
+        <p:commandButton value="Import" actionListener="#{importController.doImport}" update="growl"/>
+    <!--</h:form>-->
 </ui:define>
 </ui:composition>
 </html>

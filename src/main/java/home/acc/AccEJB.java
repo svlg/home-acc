@@ -10,6 +10,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.validation.ValidationException;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -46,7 +47,7 @@ public class AccEJB implements AccEJBRemote, Serializable {
     public List<Object[]> getReport(Date currentDate) {
 
         if (currentDate == null) currentDate = Calendar.getInstance().getTime();
-        List<Object[]> list = em.createNamedQuery("getreport").setParameter("date", currentDate).getResultList();
+        List<Object[]> list = em.createNamedQuery("getReportExpense").setParameter("date", currentDate).getResultList();
         return list;
     }
 
@@ -98,6 +99,47 @@ public class AccEJB implements AccEJBRemote, Serializable {
         }
 
         return category;
+    }
+
+    public @NotNull Category saveCategoryNative(@NotNull Category category) {
+        try {
+           //em.persist(category);
+            Query query = em.createNativeQuery("SET IDENTITY_INSERT Category ON "+
+                    "INSERT INTO Category (ID, name, groupId, parentId, isGroup, type) " +
+                    "VALUES(:id, :name, :groupId, :parentId, :isGroup, :typeStr) "+
+                    //"ON DUPLICATE KEY UPDATE name = :name, groupId = :groupId, parentId = :parentId, isGroup = :isGroup, type = :typeStr " +
+                    "SET IDENTITY_INSERT Category OFF ");
+            query.setParameter("id", category.getId());
+            query.setParameter("name", category.getName());
+            if (category.getCategoryGroup() != null)
+                query.setParameter("groupId", category.getCategoryGroup().getId());
+            else
+                query.setParameter("groupId", null);
+            if (category.getParent() != null)
+                query.setParameter("parentId", category.getParent().getId());
+            else
+                query.setParameter("parentId", null);
+            query.setParameter("isGroup", category.getisGroup());
+            query.setParameter("typeStr", category.getType().name());
+            query.executeUpdate();
+
+        } catch (ValidationException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return category;
+    }
+
+    public @NotNull Object saveObject(@NotNull Object object) {
+        try {
+            em.persist(object);
+        } catch (ValidationException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return object;
     }
 
     public Object findObjectByID(Class objClass, long id) {

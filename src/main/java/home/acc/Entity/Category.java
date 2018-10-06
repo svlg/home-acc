@@ -1,8 +1,12 @@
 package home.acc.Entity;
 
+import home.acc.XML.CategoryAdapter;
+import home.acc.XML.CategoryGroupAdapter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -34,7 +38,16 @@ public class Category implements Serializable{
     @ManyToOne(fetch=FetchType.LAZY, optional = true, cascade=CascadeType.MERGE)
     @JoinColumn (name = "parentId")
     @XmlElement
+    //@XmlIDREF
+    @XmlJavaTypeAdapter(CategoryAdapter.class)
     private Category parent;
+
+    @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
+    @JoinColumn (name = "groupId")
+    @XmlElement
+    //@XmlIDREF
+    @XmlJavaTypeAdapter(CategoryGroupAdapter.class)
+    private CategoryGroup categoryGroup;
 
     @Column(columnDefinition = "BOOLEAN")
     @NotNull
@@ -49,6 +62,14 @@ public class Category implements Serializable{
     public enum Type{
         @XmlEnumValue("income") income,
         @XmlEnumValue("expense") expense
+    }
+
+    public CategoryGroup getCategoryGroup() {
+        return categoryGroup;
+    }
+
+    public void setCategoryGroup(CategoryGroup categoryGroup) {
+        this.categoryGroup = categoryGroup;
     }
 
     public Set<Category> getChilds() {
@@ -100,6 +121,15 @@ public class Category implements Serializable{
 
     public Long getId() {
         return id;
+    }
+
+    @XmlElement
+    @XmlID
+    public String getIdString() {
+        return id.toString();
+    }
+    public void setIdString(String strId) {
+        this.id = Long.parseLong(strId);
     }
 
     public void setId(Long id) {
